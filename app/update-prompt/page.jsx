@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 
@@ -50,14 +50,16 @@ const UpdatePrompt = () => {
   };
 
   return (
-    <Form
-      action="Edit"
-      post={post}
-      setPost={setPost}
-      submitting={submitting}
-      handleSubmit={updatePrompt}
-      isUserLogged={Boolean(session?.user)}
-    />
+    <Suspense fallback={<p>Loading...</p>}>
+      <Form
+        action="Edit"
+        post={post}
+        setPost={setPost}
+        submitting={submitting}
+        handleSubmit={updatePrompt}
+        isUserLogged={Boolean(session?.user)}
+      />
+    </Suspense>
   );
 };
 
