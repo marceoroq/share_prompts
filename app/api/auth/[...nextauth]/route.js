@@ -4,11 +4,17 @@ import GoogleProvider from "next-auth/providers/google";
 import { connectToDB } from "@utils/database";
 import User from "@models/user";
 
+const ONE_DAY_IN_SECONDS = 24 * 60 * 60; // 86400 seconds
+
 const handler = NextAuth({
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      session: {
+        strategy: "jwt",
+        maxAge: ONE_DAY_IN_SECONDS,
+      },
     }),
   ],
   callbacks: {
