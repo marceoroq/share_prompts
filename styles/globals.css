@@ -74,8 +74,16 @@
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
 
+.green_btn {
+  @apply rounded-full border border-green-500 bg-green-500 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-green-500 text-center text-sm font-inter flex items-center justify-center;
+}
+
 .black_btn {
   @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
+}
+
+.outline_red_btn {
+  @apply rounded-full border border-red-600 bg-transparent py-1.5 px-5 text-red-600 transition-all hover:bg-red-600 hover:text-white text-center text-sm font-inter flex items-center justify-center;
 }
 
 .outline_btn {
@@ -115,7 +123,7 @@
 }
 
 .prompt_layout {
-  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
+  @apply space-y-6 py-8 md:columns-2 md:gap-6 xl:columns-3;
 }
 
 /* Feed Component */
@@ -130,6 +138,11 @@
 
 .form_input {
   @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0;
+}
+
+/* Profile Component */
+.profile {
+  @apply mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2;
 }
 
 /* Nav Component */
