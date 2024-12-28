@@ -18,6 +18,6 @@ const PromptSchema = new Schema({
 /* Mongose stores the models created in models, so before creating the model
 with model(), we must first check if the model does not already exist, to
 avoid generating it every time the API is called. */
-const Prompt = models.Prompt || model("Prompt", PromptSchema);
+const Prompt = models?.Prompt || model("Prompt", PromptSchema);
 
 export default Prompt;
