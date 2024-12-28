@@ -22,6 +22,6 @@ const UserSchema = new Schema({
 /* Mongose stores the models created in models, so before creating the model
 with model(), we must first check if the model does not already exist, to
 avoid generating it every time the API is called. */
-const User = models.User || model("User", UserSchema);
+const User = models?.User || model("User", UserSchema);
 
 export default User;
