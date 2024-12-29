@@ -11,20 +11,23 @@ const handler = NextAuth({
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      session: {
-        strategy: "jwt",
-        maxAge: ONE_DAY_IN_SECONDS,
-      },
     }),
   ],
   callbacks: {
     async session({ session }) {
+      console.time("NextAuth session callback");
+      console.log("SESSION CALLBACK:", session);
+      console.log("USER EMAIL:", session?.user.email);
+
       const sessionUser = await User.findOne({
         email: session?.user.email,
       });
 
+      console.log("SESSION USER:", sessionUser);
+
       if (sessionUser) session.user.id = sessionUser._id.toString();
 
+      console.timeEnd("NextAuth session callback");
       return session;
     },
     async signIn({ profile }) {
