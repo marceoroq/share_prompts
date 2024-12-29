@@ -4,8 +4,6 @@ import GoogleProvider from "next-auth/providers/google";
 import { connectToDB } from "@utils/database";
 import User from "@models/user";
 
-const ONE_DAY_IN_SECONDS = 24 * 60 * 60; // 86400 seconds
-
 const handler = NextAuth({
   providers: [
     GoogleProvider({
@@ -15,19 +13,12 @@ const handler = NextAuth({
   ],
   callbacks: {
     async session({ session }) {
-      console.time("NextAuth session callback");
-      console.log("SESSION CALLBACK:", session);
-      console.log("USER EMAIL:", session?.user.email);
-
       const sessionUser = await User.findOne({
         email: session?.user.email,
       });
 
-      console.log("SESSION USER:", sessionUser);
-
       if (sessionUser) session.user.id = sessionUser._id.toString();
 
-      console.timeEnd("NextAuth session callback");
       return session;
     },
     async signIn({ profile }) {
