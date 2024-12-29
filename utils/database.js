@@ -1,9 +1,8 @@
 import mongoose from "mongoose";
 
-let isConnected = false;
-
 export const connectToDB = async () => {
   mongoose.set("strictQuery", true);
+  const isConnected = mongoose.connection.readyState === 1;
 
   if (isConnected) {
     console.log("[i] MongoDB is already connected");
@@ -11,17 +10,12 @@ export const connectToDB = async () => {
   }
 
   try {
-    const MONGODB_URI = process.env.MONGODB_URI;
-    if (!MONGODB_URI) {
-      console.error("MONGODB_URI was not found");
-    } else {
-      await mongoose.connect(process.env.MONGODB_URI, {
-        dbName: "share_prompts",
-      });
+    await mongoose.connect(process.env.MONGODB_URI, {
+      dbName: "share_prompts",
+    });
 
-      isConnected = true;
-      console.log("[i] MongoDB Connected");
-    }
+    isConnected = true;
+    console.log("[i] MongoDB Connected");
   } catch (error) {
     console.error(error);
   }
