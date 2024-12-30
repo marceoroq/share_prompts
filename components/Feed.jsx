@@ -27,10 +27,15 @@ const Feed = () => {
     setFilteredPost(filterPrompts);
   };
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = ({ target }) => {
     clearInterval(searchTimeout);
-    setSearchText(e.target.value.trim());
-    setSearchTimeout(setTimeout(() => filterPosts(e.target.value.trim()), 500));
+    setSearchText(target.value.trim());
+    setSearchTimeout(setTimeout(() => filterPosts(target.value.trim()), 500));
+  };
+
+  const handleTagClick = ({ tag }) => {
+    setSearchText(tag);
+    filterPosts(tag);
   };
 
   return (
@@ -45,7 +50,10 @@ const Feed = () => {
           className="search_input peer"
         />
       </form>
-      <PromptCardList data={searchText ? filteredPost : posts} />
+      <PromptCardList
+        data={searchText ? filteredPost : posts}
+        handleTagClick={handleTagClick}
+      />
     </section>
   );
 };

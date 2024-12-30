@@ -6,7 +6,7 @@ const PromptCardList = ({ data, handleTagClick, handleEdit, handleDelete }) => (
       <PromptCard
         key={post._id}
         post={post}
-        handleTagClick={handleTagClick}
+        handleTagClick={() => handleTagClick && handleTagClick(post)}
         handleEdit={() => handleEdit && handleEdit(post)}
         handleDelete={() => handleDelete && handleDelete(post)}
       />
