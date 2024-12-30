@@ -27,7 +27,6 @@ export const connectToDB = async () => {
       dbName: "share_prompts",
     });
 
-    isConnected = true;
     console.log("[i] MongoDB Connected");
   } catch (error) {
     console.error("[!] MongoDB connection error:", error);
