@@ -58,22 +58,30 @@ const Nav = () => {
               />
             </Link>
           </div>
-        ) : (
+        ) : providers ? (
           <>
-            {providers &&
-              Object.values(providers).map((provider) => (
-                <div
-                  key={provider.name}
-                  className="flex gap-3 md:gap-5">
-                  <button
-                    type="button"
-                    onClick={() => signIn(provider.id)}
-                    className="black_btn">
-                    Sign In
-                  </button>
-                </div>
-              ))}
+            {Object.values(providers).map((provider) => (
+              <div
+                key={provider.name}
+                className="flex gap-3 md:gap-5">
+                <button
+                  type="button"
+                  onClick={() => signIn(provider.id)}
+                  className="black_btn">
+                  Sign In
+                </button>
+              </div>
+            ))}
           </>
+        ) : (
+          <div className="flex gap-3 md:gap-5">
+            <button
+              type="button"
+              disabled
+              className="black_btn disabled">
+              Sign In
+            </button>
+          </div>
         )}
       </div>
 
@@ -115,22 +123,30 @@ const Nav = () => {
               </div>
             )}
           </div>
-        ) : (
+        ) : providers ? (
           <>
-            {providers &&
-              Object.values(providers).map((provider) => (
-                <div
-                  key={provider.name}
-                  className="flex gap-3 md:gap-5">
-                  <button
-                    type="button"
-                    onClick={() => signIn(provider.id)}
-                    className="black_btn">
-                    Sign In
-                  </button>
-                </div>
-              ))}
+            {Object.values(providers).map((provider) => (
+              <div
+                key={provider.name}
+                className="flex gap-3 md:gap-5">
+                <button
+                  type="button"
+                  onClick={() => signIn(provider.id)}
+                  className="black_btn">
+                  Sign In
+                </button>
+              </div>
+            ))}
           </>
+        ) : (
+          <div className="flex gap-3 md:gap-5">
+            <button
+              type="button"
+              disabled
+              className="black_btn disabled">
+              Sign In
+            </button>
+          </div>
         )}
       </div>
     </nav>
