@@ -8,16 +8,12 @@ import { usePathname, useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
-const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
+const PromptCard = ({ post, handleTagClick, handleDelete }) => {
   const [copied, setCopied] = useState(false);
   const { data: session } = useSession();
   const pathName = usePathname();
-  const router = useRouter();
-
-  const handleProfileClick = () => {
-    router.push("/profile");
-  };
 
   const handleCopy = () => {
     // TODO: move to a custom hook like useCopy (analize)
@@ -31,9 +27,9 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
-        <div
-          className="flex-1 flex justify-start items-center gap-3 cursor-pointer"
-          onClick={handleProfileClick}>
+        <Link
+          className="flex-1 flex justify-start items-center gap-3"
+          href="/profile">
           <Image
             src={post.creator.image}
             alt="user_image"
@@ -46,7 +42,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
             <h3 className="font-satoshi font-semibold text-gray-900">{post.creator.username}</h3>
             <p className="font-inter text-sm text-gray-500">{post.creator.email}</p>
           </div>
-        </div>
+        </Link>
 
         <div
           className="copy_btn"
@@ -75,11 +71,11 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
             onClick={handleDelete}>
             Delete
           </p>
-          <p
+          <Link
             className="green_btn cursor-pointer"
-            onClick={handleEdit}>
+            href={`/update-prompt?id=${post._id}`}>
             Edit
-          </p>
+          </Link>
         </div>
       )}
     </div>
