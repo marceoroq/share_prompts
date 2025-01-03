@@ -9,7 +9,7 @@ export default {
     extend: {
       fontFamily: {
         satoshi: ["Satoshi", "sans-serif"],
-        inter: ["Inter", "sans-serif"],
+        sans: ["var(--font-inter)"],
       },
       colors: {
         background: "var(--background)",

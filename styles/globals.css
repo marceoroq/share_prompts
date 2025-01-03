@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap");
 
 @tailwind base;
@@ -75,19 +74,19 @@
 }
 
 .green_btn {
-  @apply rounded-full border border-green-500 bg-green-500 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-green-500 text-center text-sm font-inter flex items-center justify-center;
+  @apply rounded-full border border-green-500 bg-green-500 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-green-500 text-center text-sm font-sans flex items-center justify-center;
 }
 
 .black_btn {
-  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center disabled:bg-slate-500 disabled:border-gray-500 disabled:hover:text-white;
+  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-sans flex items-center justify-center disabled:bg-slate-500 disabled:border-gray-500 disabled:hover:text-white;
 }
 
 .outline_red_btn {
-  @apply rounded-full border border-red-600 bg-transparent py-1.5 px-5 text-red-600 transition-all hover:bg-red-600 hover:text-white text-center text-sm font-inter flex items-center justify-center;
+  @apply rounded-full border border-red-600 bg-transparent py-1.5 px-5 text-red-600 transition-all hover:bg-red-600 hover:text-white text-center text-sm font-sans flex items-center justify-center;
 }
 
 .outline_btn {
-  @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
+  @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-sans flex items-center justify-center;
 }
 
 .head_text {
@@ -155,7 +154,7 @@
 }
 
 .dropdown_link {
-  @apply text-sm font-inter text-gray-700 hover:text-gray-500 font-medium;
+  @apply text-sm font-sans text-gray-700 hover:text-gray-500 font-medium;
 }
 
 /* PromptCard Component */

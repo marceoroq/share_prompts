@@ -1,6 +1,13 @@
 import "@styles/globals.css";
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 export const metadata = {
   title: "PromptVerse",
@@ -10,7 +17,9 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${inter.variable}`}>
       <body>
         <div className="main">
           <div className="gradient"></div>
