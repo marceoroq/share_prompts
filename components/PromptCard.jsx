@@ -1,29 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCopy } from "@fortawesome/free-regular-svg-icons";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
+import { faCopy } from "@fortawesome/free-regular-svg-icons";
+
+import useCopy from "@hooks/useCopy";
 
 const PromptCard = ({ post, handleTagClick, handleDelete }) => {
-  const [copied, setCopied] = useState(false);
+  const [copied, handleCopy] = useCopy(post.prompt);
   const { data: session } = useSession();
   const pathName = usePathname();
-  const isSessionSameAsCreator = session?.user.id === post.creator._id;
 
-  const handleCopy = () => {
-    // TODO: move to a custom hook like useCopy (analize)
-    setCopied(true);
-    navigator.clipboard.writeText(post.prompt);
-    setTimeout(() => {
-      setCopied(false);
-    }, 3000);
-  };
+  const isSessionSameAsCreator = session?.user.id === post.creator._id;
 
   return (
     <div className="prompt_card">
