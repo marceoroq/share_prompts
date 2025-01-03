@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
@@ -14,6 +14,7 @@ const PromptCard = ({ post, handleTagClick, handleDelete }) => {
   const [copied, setCopied] = useState(false);
   const { data: session } = useSession();
   const pathName = usePathname();
+  const isSessionSameAsCreator = session?.user.id === post.creator._id;
 
   const handleCopy = () => {
     // TODO: move to a custom hook like useCopy (analize)
@@ -29,7 +30,7 @@ const PromptCard = ({ post, handleTagClick, handleDelete }) => {
       <div className="flex justify-between items-start gap-5">
         <Link
           className="flex-1 flex justify-start items-center gap-3"
-          href="/profile">
+          href={isSessionSameAsCreator ? "/profile" : `/profile/${post.creator._id}`}>
           <Image
             src={post.creator.image}
             alt="user_image"
@@ -64,7 +65,7 @@ const PromptCard = ({ post, handleTagClick, handleDelete }) => {
         {post.tag}
       </p>
 
-      {session?.user.id === post.creator._id && pathName === "/profile" && (
+      {isSessionSameAsCreator && pathName === "/profile" && (
         <div className="mt-5 flex justify-end gap-2 border-t border-gray-100 pt-3">
           <p
             className="outline_red_btn cursor-pointer"

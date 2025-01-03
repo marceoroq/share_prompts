@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 
 import Profile from "@components/Profile";
 
-const ProfilePage = () => {
+const MyProfile = () => {
   const { data: session } = useSession();
   const [posts, setPosts] = useState([]);
 
@@ -39,12 +39,12 @@ const ProfilePage = () => {
 
   return (
     <Profile
-      name={session?.user.name || "Your"}
-      desc="Welcome to your personalized profile page"
+      name="My Profile"
+      desc="Welcome to your personalized profile page. Share your exceptional prompts and inspire others with the power of your imagination"
       data={posts}
       handleDelete={handleDelete}
     />
   );
 };
 
-export default ProfilePage;
+export default MyProfile;
