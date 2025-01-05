@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 
 import Form from "@components/Form";
 
-const UpdatePrompt = ({ searchParams }) => {
+export default function UpdatePromptPage({ searchParams }) {
   const router = useRouter();
   const { data: session } = useSession();
   const { id: promptId } = use(searchParams);
@@ -58,6 +58,4 @@ const UpdatePrompt = ({ searchParams }) => {
       isUserLogged={Boolean(session?.user)}
     />
   );
-};
-
-export default UpdatePrompt;
+}

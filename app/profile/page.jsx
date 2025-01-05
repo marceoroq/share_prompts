@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 
 import Profile from "@components/Profile";
 
-const MyProfile = () => {
+export default function MyProfilePage() {
   const { data: session } = useSession();
   const [posts, setPosts] = useState([]);
 
@@ -45,6 +45,4 @@ const MyProfile = () => {
       handleDelete={handleDelete}
     />
   );
-};
-
-export default MyProfile;
+}

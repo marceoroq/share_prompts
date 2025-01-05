@@ -1,6 +1,6 @@
 import Feed from "@components/Feed";
 
-export default async function Home() {
+export default async function HomePage() {
   const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/prompt`);
   const posts = await response.json();
 

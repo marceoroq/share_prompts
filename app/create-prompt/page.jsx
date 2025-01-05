@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 
 import Form from "@components/Form";
 
-const CreatePrompt = () => {
+export default function CreatePromptPage() {
   const router = useRouter();
   const { data: session } = useSession();
   const [submitting, setSubmitting] = useState(false);
@@ -47,6 +47,4 @@ const CreatePrompt = () => {
       isUserLogged={Boolean(session?.user)}
     />
   );
-};
-
-export default CreatePrompt;
+}
