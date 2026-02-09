@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -20,9 +21,7 @@ const Nav = () => {
 
   return (
     <nav className="flex-between w-full mb-16 pt-3 bg-red">
-      <Link
-        href="/"
-        className="flex gap-2 flex-center">
+      <Link href="/" className="flex gap-2 flex-center">
         <Image
           src="/assets/images/logo.png"
           alt="promptverse logo"
@@ -37,15 +36,10 @@ const Nav = () => {
       <div className="hidden sm:flex">
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
-            <Link
-              href="/create-prompt"
-              className="black_btn">
+            <Link href="/create-prompt" className="black_btn">
               Create Post
             </Link>
-            <button
-              type="button"
-              onClick={signOut}
-              className="outline_btn">
+            <button type="button" onClick={signOut} className="outline_btn">
               Sign Out
             </button>
             <Link href="/profile">
@@ -61,13 +55,12 @@ const Nav = () => {
         ) : providers ? (
           <>
             {Object.values(providers).map((provider) => (
-              <div
-                key={provider.name}
-                className="flex gap-3 md:gap-5">
+              <div key={provider.name} className="flex gap-3 md:gap-5">
                 <button
                   type="button"
                   onClick={() => signIn(provider.id)}
-                  className="black_btn">
+                  className="black_btn"
+                >
                   Sign In
                 </button>
               </div>
@@ -75,10 +68,7 @@ const Nav = () => {
           </>
         ) : (
           <div className="flex gap-3 md:gap-5">
-            <button
-              type="button"
-              disabled
-              className="black_btn disabled">
+            <button type="button" disabled className="black_btn disabled">
               Sign In
             </button>
           </div>
@@ -102,13 +92,15 @@ const Nav = () => {
                 <Link
                   href="/profile"
                   className="dropdown_link"
-                  onClick={() => setToggleDropdown((prevValue) => !prevValue)}>
+                  onClick={() => setToggleDropdown((prevValue) => !prevValue)}
+                >
                   My Profile
                 </Link>
                 <Link
                   href="/create-prompt"
                   className="dropdown_link"
-                  onClick={() => setToggleDropdown((prevValue) => !prevValue)}>
+                  onClick={() => setToggleDropdown((prevValue) => !prevValue)}
+                >
                   Create Post
                 </Link>
                 <button
@@ -117,7 +109,8 @@ const Nav = () => {
                     setToggleDropdown(false);
                     signOut();
                   }}
-                  className="mt-5 w-full black_btn">
+                  className="mt-5 w-full black_btn"
+                >
                   Sign Out
                 </button>
               </div>
@@ -126,13 +119,12 @@ const Nav = () => {
         ) : providers ? (
           <>
             {Object.values(providers).map((provider) => (
-              <div
-                key={provider.name}
-                className="flex gap-3 md:gap-5">
+              <div key={provider.name} className="flex gap-3 md:gap-5">
                 <button
                   type="button"
                   onClick={() => signIn(provider.id)}
-                  className="black_btn">
+                  className="black_btn"
+                >
                   Sign In
                 </button>
               </div>
@@ -140,10 +132,7 @@ const Nav = () => {
           </>
         ) : (
           <div className="flex gap-3 md:gap-5">
-            <button
-              type="button"
-              disabled
-              className="black_btn disabled">
+            <button type="button" disabled className="black_btn disabled">
               Sign In
             </button>
           </div>
